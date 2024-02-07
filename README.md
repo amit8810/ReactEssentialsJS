@@ -152,6 +152,47 @@ console.log(hero3); // spiderman
 const [firstHero, ...othersHeroes] = heroes;
 console.log(firstHero); // superman
 console.log(othersHeroes); // [ 'batman', 'spiderman', 'thor' ]
+```
 
+## Template Literals In JS
+JavaScript template literals provide a more flexible and readable way to create strings.
+They are enclosed within backticks (` `) instead of single or double quotes.
 
+1. > Basic Usage
+```javascript
+const fname = 'amit';
+const greeting = `hello ${fname}`
+console.log(greeting); // hello amit
+```
+2. > Multiline String
+```javascript
+let str = `this is a
+multiline
+string`;
+console.log(str);
+/*
+this is a
+multiline
+string
+*/
+```
+3. > Expression Interpolation
+```javascript
+const a = 10;
+const b = 5;
+const result = `The sum of ${a} and ${b} is ${a + b}`;
+console.log(result); // Output: The sum of 10 and 5 is 15
+```
+4. > Tagged Templates
+```javascript
+function tag(strings, ...values) {
+    console.log(strings); // Array of string literals
+    console.log(values);  // Array of interpolated values
+    return 'Processed string';
+}
+
+const a = 10;
+const b = 5;
+const processed = tag`The sum of ${a} and ${b} is ${a + b}`;
+console.log(processed); // Output: Processed string
 ```
