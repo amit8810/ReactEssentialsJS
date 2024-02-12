@@ -196,3 +196,68 @@ const b = 5;
 const processed = tag`The sum of ${a} and ${b} is ${a + b}`;
 console.log(processed); // Output: Processed string
 ```
+
+## JavaScript Asynchronous Programming and Callbacks [🔗](https://flaviocopes.com/javascript-callbacks/)
+JavaScript is synchronous by default, and is single threaded. This means that code cannot create new threads and run in parallel.
+> In simple terms, JavaScript follows a "**one thing at a time**" approach and can only do **one task at a time**. It doesn't have the ability to create multiple threads or do things simultaneously. So, if there's a piece of code running, everything else has to wait until it's finished before running.
+* Lines of code are executed in series, one after another, for example:
+```javascript
+const a = 1
+const b = 2
+const c = a * b
+console.log(c)
+doSomething()
+```
+But JavaScript was born inside the browser, its main job, in the beginning, was to respond to user actions, like `onClick`, `onMouseOver`, `onChange`, `onSubmit` and so on. How could it do this with a synchronous programming model?
+The answer was in its environment. The browser provides a way to do it by providing a set of APIs that can handle this kind of functionality.
+
+#### Callbacks
+You can’t know when a user is going to click a button, so what you do is, you define an event handler for the click event. This event handler accepts a function, which will be called when the event is triggered:
+```javascript
+document.getElementById('button').addEventListener('click', () => {
+  //item clicked
+})
+```
+This is the so-called `callback`.
+```javascript
+/**
+ * A callback is a function that will be executed after another function gets executed. In javascript, functions are treated as first-class citizens, they can be used as an argument of another function, can be returned by another function, and can be used as a property of an object.
+
+ ** Functions that are used as an argument to another function are called callback functions. Example:
+*/
+
+function multiplyBy2(number){
+    return number * 2;
+}
+
+function divideBy2(number){
+    return number / 2;
+}
+
+function sumOfTwoNumbers(x, y, operation){
+    const result = x + y;
+    return operation(result); // Here we call the callback function with "operation" being a parameter of sumOfTwoNumbers
+}
+
+console.log(sumOfTwoNumbers(10, 20, multiplyBy2)); // 60
+console.log(sumOfTwoNumbers(10, 20, divideBy2)); // 15
+```
+##### **Alternatives to callbacks**
+Starting with ES6, JavaScript introduced several features that help us with asynchronous code that do not involve using callbacks:
+* [Promises](https://flaviocopes.com/javascript-promises/) (ES2015)
+* [Async/Await](https://flaviocopes.com/javascript-async-await/) (ES2017)
+
+## ES Modules [🔗](https://flaviocopes.com/es-modules/)
+The syntax to import a module is:
+```javascript
+import package from 'module-name'
+```
+while CommonJS uses
+```javascript
+const package = require('module-name')
+```
+> A module is a JavaScript file that exports one or more values (objects, functions or variables), using the export keyword. For example, this module exports a function that returns a string uppercase:
+```javascript
+// uppercase.js
+export default str => str.toUpperCase()
+```
