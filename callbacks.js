@@ -21,8 +21,26 @@ console.log(sumOfTwoNumbers(10, 20, multiplyBy2)); // 60
 console.log(sumOfTwoNumbers(10, 20, divideBy2)); // 15
 
 // Callbacks are used everywhere, not just in DOM events.
-// One common example is by using timers:
-setTimeout(() => {
-    console.log(`Hello i'm executed with 2sec delay`);
-}, 2000)
+// Callback are used in asynchronous operations
+
+
+// Asynchronous operation with callback
+function fetchData (url, callback) {
+
+    setTimeout(() => {
+        const data = `some data fetched from : ${url}`
+        callback(null, data);
+
+    }, 2000)
+
+}
+
+// Using the fetchData function with a callback
+fetchData( "https://example.com/api/data", (err, result) =>{
+    if(err){
+        console.error(err);
+    } else {
+        console.log(result);
+    }
+})
 
